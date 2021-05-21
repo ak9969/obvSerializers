@@ -9,6 +9,14 @@ from rest_framework import generics,mixins
 
 
 # Create your views here.
+class StudentList(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentDetail(generics.RetrieveUpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer    
+"""
 class StudentList(mixins.ListModelMixin,
 mixins.CreateModelMixin,
 generics.GenericAPIView):
@@ -37,7 +45,7 @@ generics.GenericAPIView):
     def delete(self,request,pk):
         return self.destroy(request,pk)
 
-"""
+
 class StudentList(APIView):
 
     def get(self,request):
